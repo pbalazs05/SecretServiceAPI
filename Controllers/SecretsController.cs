@@ -1,21 +1,16 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Net.Mime;
-using Azure.Core;
 using Microsoft.AspNetCore.Mvc;
-
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using NuGet.Protocol;
 using WebApplication1.Models;
-using ContentType = System.Net.Mime.ContentType;
+
 
 namespace WebApplication1.Controllers
 {
     [Route("/secret")]
     [ApiController]
-    
     public class SecretsController : ControllerBase
     {
         private readonly SecretContext _context;
@@ -169,7 +164,7 @@ namespace WebApplication1.Controllers
             _context.Secrets.Add(secret);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSecret", new { secret.hash }, secret);
+            return CreatedAtAction("PostSecret", new { secret.hash }, secret);
         }
 
         /*

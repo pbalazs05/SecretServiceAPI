@@ -15,7 +15,10 @@ internal class Program
 
         builder.Services.AddControllers();
 
-        builder.Services.AddDbContext<SecretContext>(opt => opt.UseInMemoryDatabase("Secrets"));
+        //var sqlConnection = builder.Configuration["ConnectionString:MyDbConnection"];
+       // builder.Services.AddSqlServer<SecretContext>(sqlConnection, options => options.EnableRetryOnFailure());
+        builder.Services.AddDbContext<SecretContext>(opt => opt.UseSqlServer("name=MyDbConnection"));//ha ez kommentelem ésa Contextben kiveszem a kommentet majd a 25. sort kommentelem akkor a lokális adatbázissal komunikál
+      //  builder.Services.AddDbContext<SecretContext>(opt => opt.UseMySql("name=secrets"));
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
@@ -34,11 +37,11 @@ internal class Program
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
-        {
+      //  if (app.Environment.IsDevelopment())
+       // {
             app.UseSwagger();
             app.UseSwaggerUI();
-        }
+       // }
 
         app.UseHttpsRedirection();
 

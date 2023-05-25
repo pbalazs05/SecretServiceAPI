@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
+﻿
 using System.Diagnostics.CodeAnalysis;
 
 namespace WebApplication1.Models
@@ -34,9 +33,7 @@ namespace WebApplication1.Models
         /// <summary>
         /// How many times the secret can be viewed
         /// </summary>
-        public int remainingViews { get; set; } 
+        public int remainingViews { get; set; }
 
-
-        
     }
 }
