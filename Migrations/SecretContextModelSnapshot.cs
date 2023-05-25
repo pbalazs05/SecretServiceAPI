@@ -25,7 +25,6 @@ namespace WebApplication1.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("createdAt")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("expiresAt")
